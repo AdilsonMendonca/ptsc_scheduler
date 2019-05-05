@@ -17,7 +17,6 @@ steps:
     cp 
   displayName: 'Generate Artifacts'
 
-steps:
 - task: PublishPipelineArtifact@0
   inputs:
     artifactName: 'PTSCScheduler'
