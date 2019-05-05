@@ -14,6 +14,7 @@ steps:
     mkdir -p /tmp/artifacts
     mkdir -p /tmp/artifacts/schedules
     cp *py /tmp/artifacts
+    cp *txt /tmp/artifacts
     cp schedules/* /tmp/artifacts/schedules
   displayName: 'Generate Artifacts'
 
