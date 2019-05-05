@@ -14,7 +14,7 @@ steps:
     mkdir -p /tmp/artifacts
     mkdir -p /tmp/artifacts/schedules
     cp *py /tmp/artifacts
-    cp 
+    cp schedules/* /tmp/artifacts/schedules
   displayName: 'Generate Artifacts'
 
 - task: PublishPipelineArtifact@0
