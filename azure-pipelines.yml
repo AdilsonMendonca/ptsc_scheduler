@@ -10,17 +10,15 @@ pool:
   vmImage: 'Ubuntu-16.04'
 
 steps:
-- task: UsePythonVersion@0
-  inputs:
-    versionSpec: '3.6'
-    architecture: 'x64'
-
-- script: pip install -r requirements.txt
-  displayName: 'Prepare environment'
-
 - script: |
-    export EMAIL_FROM=$(EMAIL_FROM)
-    export EMAIL_TO=$(EMAIL_TO)
-    export SENDGRID_API_KEY=$(SENDGRID_API_KEY)
-    python send_schedule_reminder.py
-  displayName: 'Send Reminder'
+    mkdir -p /tmp/artifacts
+    mkdir -p /tmp/artifacts/schedules
+    cp *py /tmp/artifacts
+    cp 
+  displayName: 'Generate Artifacts'
+
+steps:
+- task: PublishPipelineArtifact@0
+  inputs:
+    artifactName: 'PTSCScheduler'
+    targetPath: '/tmp/artifacts'
