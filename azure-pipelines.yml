@@ -1,0 +1,21 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'Ubuntu-16.04'
+
+steps:
+- script: pip install -r requirements.txt
+  displayName: 'Prepare environment'
+
+- script: |
+    export EMAIL_FROM=$(EMAIL_FROM)
+    export EMAIL_TO=$(EMAIL_TO)
+    export SENDGRID_API_KEY=$(SENDGRID_API_KEY)
+    python send_schedule_reminder.py
+  displayName: 'Send Reminder'
